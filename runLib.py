@@ -17,6 +17,7 @@ from rosalindLibrary.programs.fib import runFib
 from rosalindLibrary.programs.gc import runGc
 from rosalindLibrary.programs.prot import runProt
 from rosalindLibrary.programs.subs import runSubs
+from rosalindLibrary.programs.prob import runProb
 
 #-------------------------------------------------------------------------------
 # Code
@@ -30,7 +31,8 @@ commands = {
     "fib" : runFib,
     "gc" : runGc,
     "prot" : runProt,
-    "subs" : runSubs
+    "subs" : runSubs,
+    "prob" : runProb
 }
 
 chosenProgram = sys.argv[1]
