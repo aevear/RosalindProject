@@ -18,6 +18,8 @@ from rosalindLibrary.programs.gc import runGc
 from rosalindLibrary.programs.prot import runProt
 from rosalindLibrary.programs.subs import runSubs
 from rosalindLibrary.programs.prob import runProb
+from rosalindLibrary.programs.sseq import runSseq
+
 
 #-------------------------------------------------------------------------------
 # Code
@@ -32,7 +34,8 @@ commands = {
     "gc" : runGc,
     "prot" : runProt,
     "subs" : runSubs,
-    "prob" : runProb
+    "prob" : runProb,
+    "sseq" : runSseq
 }
 
 chosenProgram = sys.argv[1]
