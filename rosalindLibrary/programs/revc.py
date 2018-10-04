@@ -4,10 +4,10 @@
 
 def runRevc(inputFile):
     fi = open(inputFile, 'r') #reads in the file that list the before/after file names
-    activityFile = fi.read() #reads in files
+    inputData = fi.read() #reads in files
     finalString = ""
 
-    for k in activityFile:
+    for k in inputData:
         if k =="T":
             finalString = finalString + "A"
         if k =="A":
