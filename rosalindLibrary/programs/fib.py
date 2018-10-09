@@ -10,9 +10,9 @@ def runFib(inputFile):
     mature, immature = 0, 1
 
     for i in range(n-1):
-        newbabies = mature * m
+        babies = mature * m
         mature = immature + mature
-        immature = newbabies
+        immature = babies
         total = mature + immature
     return total
 

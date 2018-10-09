@@ -20,11 +20,14 @@ from rosalindLibrary.programs.subs import runSubs
 from rosalindLibrary.programs.prob import runProb
 from rosalindLibrary.programs.sseq import runSseq
 from rosalindLibrary.programs.lexf import runLexf
+from rosalindLibrary.programs.hamm import runHamm
+from rosalindLibrary.programs.iev import runIev
 
 #-------------------------------------------------------------------------------
 # Code
 #-------------------------------------------------------------------------------
 #print a list of commands
+sys.dont_write_bytecode = True
 commands = {
     "dna" : runDna,
     "rna" : runRna,
@@ -36,7 +39,9 @@ commands = {
     "subs" : runSubs,
     "prob" : runProb,
     "sseq" : runSseq,
-    "lexf" : runLexf
+    "lexf" : runLexf,
+    "hamm" : runHamm,
+    "iev" : runIev
 
 }
 
