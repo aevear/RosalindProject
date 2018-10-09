@@ -14,6 +14,7 @@ from rosalindLibrary.programs.rna import runRna
 from rosalindLibrary.programs.revc import runRevc
 from rosalindLibrary.programs.iprb import runIprb
 from rosalindLibrary.programs.fib import runFib
+from rosalindLibrary.programs.fibd import runFibd
 from rosalindLibrary.programs.gc import runGc
 from rosalindLibrary.programs.prot import runProt
 from rosalindLibrary.programs.subs import runSubs
@@ -22,6 +23,8 @@ from rosalindLibrary.programs.sseq import runSseq
 from rosalindLibrary.programs.lexf import runLexf
 from rosalindLibrary.programs.hamm import runHamm
 from rosalindLibrary.programs.iev import runIev
+from rosalindLibrary.programs.mrna import runMrna
+
 
 #-------------------------------------------------------------------------------
 # Code
@@ -34,6 +37,7 @@ commands = {
     "revc" : runRevc,
     "iprb" : runIprb,
     "fib" : runFib,
+    "fibd" : runFibd,
     "gc" : runGc,
     "prot" : runProt,
     "subs" : runSubs,
@@ -41,6 +45,7 @@ commands = {
     "sseq" : runSseq,
     "lexf" : runLexf,
     "hamm" : runHamm,
+    "mrna" : runMrna,
     "iev" : runIev
 
 }

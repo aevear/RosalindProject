@@ -1,27 +1,22 @@
 #-------------------------------------------------------------------------------
-# Import Libraries
+# Libraries
 #-------------------------------------------------------------------------------
-from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
+from rosalindLibrary.tools.rosalindTools import DnaCombinationTable
 #-------------------------------------------------------------------------------
 # GC
 #-------------------------------------------------------------------------------
 
-def runGc(inputFile):
-    fastaNames, fastaData = rosalindLoader(inputFile)
+def runMrna(inputFile):
+    fi = open(inputFile, 'r')
+    dnaString = fi.read().strip("\n")
+    totalLength = 1
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    for k in dnaString:
+        totalLength = totalLength * DnaCombinationTable(k)
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+
+    return (totalLength * 3) % 1000000
+
 
 #-------------------------------------------------------------------------------
 # Fin
