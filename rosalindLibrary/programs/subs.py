@@ -5,9 +5,7 @@
 def runSubs(inputFile):
     fi = open(inputFile, 'r') #reads in the file that list the before/after file names
     sourceString = fi.readline() #reads in files
-    referenceString = fi.readline() #reads in files
-
-    referenceString = referenceString.strip()
+    referenceString = fi.strip().readline() #reads in files
 
     location, results = 0, ""
 

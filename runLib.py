@@ -24,7 +24,7 @@ from rosalindLibrary.programs.lexf import runLexf
 from rosalindLibrary.programs.hamm import runHamm
 from rosalindLibrary.programs.iev import runIev
 from rosalindLibrary.programs.mrna import runMrna
-
+from rosalindLibrary.programs.lia import runLia
 
 #-------------------------------------------------------------------------------
 # Code
@@ -46,6 +46,7 @@ commands = {
     "lexf" : runLexf,
     "hamm" : runHamm,
     "mrna" : runMrna,
+    "lia" : runLia,
     "iev" : runIev
 
 }

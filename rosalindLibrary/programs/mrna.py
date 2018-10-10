@@ -14,7 +14,6 @@ def runMrna(inputFile):
     for k in dnaString:
         totalLength = totalLength * DnaCombinationTable(k)
 
-
     return (totalLength * 3) % 1000000
 
 

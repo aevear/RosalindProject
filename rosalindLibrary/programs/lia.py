@@ -1,27 +1,15 @@
 #-------------------------------------------------------------------------------
-# Import Libraries
-#-------------------------------------------------------------------------------
-from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
-#-------------------------------------------------------------------------------
-# GC
+# Lia
 #-------------------------------------------------------------------------------
 
-def runGc(inputFile):
-    fastaNames, fastaData = rosalindLoader(inputFile)
+def runLia(inputFile):
+    fi = open(inputFile, 'r') #reads in the file that list the before/after file names
+    inputData = fi.readline().split() #reads in files
+    k, n = int(inputData[0]), int(inputData[1])
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+
+    return fastaNames
 
 #-------------------------------------------------------------------------------
 # Fin
