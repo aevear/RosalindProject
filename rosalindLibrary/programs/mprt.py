@@ -1,27 +1,36 @@
 #-------------------------------------------------------------------------------
 # Import Libraries
 #-------------------------------------------------------------------------------
-from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
+from urllib import urlopen
+
+#r = urlopen("http://download.cathdb.info/cath/releases/all-releases/v4_2_0/cath-classification-data/cath-domain-list-v4_2_0.txt")
+
 #-------------------------------------------------------------------------------
-# GC
+# Mprt
 #-------------------------------------------------------------------------------
 
-def runGc(inputFile):
-    fastaNames, fastaData = rosalindLoader(inputFile)
+def runMprt(inputFile):
+    fi = open(inputFile, 'r') #reads in the file that list the before/after file names
+    inputData = fi.read().split("\n") #reads in files
+    inputData = inputData[:-1]
+    dataPackages = []
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    for k in inputData:
+        dataPackages.append(urlopen("http://www.uniprot.org/uniprot/" + k + ".fasta"))
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+    #N{P}[ST]{P}
+
+    #Compile the lines
+    counter = 0
+    compiledLine, compiledLines = '', []
+    for k in dataPackages:
+        for line in k:
+            if line[0] != ">":
+                compiledLine = compiledLine + line[:-1]
+        compiledLines.append(compiledLine)
+
+
+    return compiledLines
 
 #-------------------------------------------------------------------------------
 # Fin

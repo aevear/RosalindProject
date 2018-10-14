@@ -25,6 +25,9 @@ from rosalindLibrary.programs.hamm import runHamm
 from rosalindLibrary.programs.iev import runIev
 from rosalindLibrary.programs.mrna import runMrna
 from rosalindLibrary.programs.lia import runLia
+from rosalindLibrary.programs.prtm import runPrtm
+from rosalindLibrary.programs.grph import runGrph
+from rosalindLibrary.programs.mprt import runMprt
 
 #-------------------------------------------------------------------------------
 # Code
@@ -47,6 +50,9 @@ commands = {
     "hamm" : runHamm,
     "mrna" : runMrna,
     "lia" : runLia,
+    "prtm" : runPrtm,
+    "grph" : runGrph,
+    "mprt" : runMprt,
     "iev" : runIev
 
 }

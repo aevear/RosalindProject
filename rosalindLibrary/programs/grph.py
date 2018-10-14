@@ -3,25 +3,25 @@
 #-------------------------------------------------------------------------------
 from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
 #-------------------------------------------------------------------------------
-# GC
+# Grph
 #-------------------------------------------------------------------------------
 
-def runGc(inputFile):
+def runGrph(inputFile):
     fastaNames, fastaData = rosalindLoader(inputFile)
+    front03, back03, results = [], [], []
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    #make front and back 03
+    for k in fastaData:
+        front03.append(k[:3])
+        back03.append(k[-3:])
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+    for frontCounter, frontEnd in enumerate(front03):
+        for backCounter, backEnd in enumerate(back03):
+            if frontCounter != backCounter:
+                if frontEnd == backEnd:
+                    results.append(fastaNames[backCounter] + " " + fastaNames[frontCounter])
+
+    return "\n".join(results)
 
 #-------------------------------------------------------------------------------
 # Fin

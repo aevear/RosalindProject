@@ -8,8 +8,8 @@ from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
 
 def runGc(inputFile):
     fastaNames, fastaData = rosalindLoader(inputFile)
-
     winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
+
     for fastaEntry in fastaData:
         for nucleotide in fastaEntry:
             if (nucleotide == "G" or nucleotide == "C"):
