@@ -28,6 +28,8 @@ from rosalindLibrary.programs.lia import runLia
 from rosalindLibrary.programs.prtm import runPrtm
 from rosalindLibrary.programs.grph import runGrph
 from rosalindLibrary.programs.mprt import runMprt
+from rosalindLibrary.programs.cons import runCons
+from rosalindLibrary.programs.orf import runOrf
 
 #-------------------------------------------------------------------------------
 # Code
@@ -53,6 +55,8 @@ commands = {
     "prtm" : runPrtm,
     "grph" : runGrph,
     "mprt" : runMprt,
+    "cons" : runCons,
+    "orf" : runOrf,
     "iev" : runIev
 
 }

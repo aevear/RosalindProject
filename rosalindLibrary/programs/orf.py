@@ -2,27 +2,46 @@
 # Import Libraries
 #-------------------------------------------------------------------------------
 from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
+from rosalindLibrary.tools.rosalindTools import nucToProtien
 #-------------------------------------------------------------------------------
-# GC
+# Orf
 #-------------------------------------------------------------------------------
+def findProteins(index, dnaString):
+    protienString, looping = "", True
+    readingFrame = index
+    while looping:
+        if (len(dnaString) - readingFrame ) < 3:
+            looping = False
+        else:
+            newProtien = nucToProtien(dnaString[readingFrame:readingFrame+3])
+            if newProtien == "Stop":
+                looping = False
+                return protienString
+            else:
+                protienString = protienString + newProtien
+                #print protienString
+                readingFrame +=3
+    return 1
 
-def runGc(inputFile):
+
+def runOrf(inputFile):
     fastaNames, fastaData = rosalindLoader(inputFile)
+    openFrameLocations, reverseFrameLocations, results = [], [], []
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    #This part will make a list of all open reading frames that will be fed to the next part and exaimed there
+    for index in range(len( fastaData[0] ) -2 ):
+        if (fastaData[0][index] == "A") and (fastaData[0][index+1] == "T") and (fastaData[0][index+2] == "G"):
+            openFrameLocations.append(index)
+        if (fastaData[0][index] == "C") and (fastaData[0][index+1] == "A") and (fastaData[0][index+2] == "T"):
+            reverseFrameLocations.append(index)
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+    for index in openFrameLocations:
+        tempResults = findProteins(index, fastaData[0])
+        print tempResults
+        if tempResults != 1:
+            results.append(tempResults)
 
+    return results
 #-------------------------------------------------------------------------------
 # Fin
 #-------------------------------------------------------------------------------
