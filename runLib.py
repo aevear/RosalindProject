@@ -29,6 +29,9 @@ from rosalindLibrary.programs.prtm import runPrtm
 from rosalindLibrary.programs.grph import runGrph
 from rosalindLibrary.programs.mprt import runMprt
 from rosalindLibrary.programs.cons import runCons
+from rosalindLibrary.programs.splc import runSplc
+from rosalindLibrary.programs.lcsm import runLcsm
+from rosalindLibrary.programs.perm import runPerm
 from rosalindLibrary.programs.orf import runOrf
 
 #-------------------------------------------------------------------------------
@@ -40,6 +43,7 @@ commands = {
     "dna" : runDna,
     "rna" : runRna,
     "revc" : runRevc,
+    "perm" : runPerm,
     "iprb" : runIprb,
     "fib" : runFib,
     "fibd" : runFibd,
@@ -57,6 +61,8 @@ commands = {
     "mprt" : runMprt,
     "cons" : runCons,
     "orf" : runOrf,
+    "splc" : runSplc,
+    "lcsm" : runLcsm,
     "iev" : runIev
 
 }

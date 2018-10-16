@@ -1,27 +1,28 @@
 #-------------------------------------------------------------------------------
 # Import Libraries
 #-------------------------------------------------------------------------------
-from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
+from itertools import permutations
 #-------------------------------------------------------------------------------
-# GC
+# Perm
 #-------------------------------------------------------------------------------
+def runPerm(inputFile):
+    fi = open(inputFile, 'r') #reads in the file that list the before/after file names
+    inputData = fi.read() #reads in files
 
-def runGc(inputFile):
-    fastaNames, fastaData = rosalindLoader(inputFile)
+    #generate factorial
+    combinations, results = [], ""
+    for k in range(int(inputData)+1):
+        combinations.append(k)
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    perm = permutations(combinations[1:])
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+    # Print the obtained permutations
+    for i in list(perm):
+        results = results + str(i)
+
+    results = results.replace("(", "\n").replace(")", "").replace(",", "")
+
+    return results[1:]
 
 #-------------------------------------------------------------------------------
 # Fin

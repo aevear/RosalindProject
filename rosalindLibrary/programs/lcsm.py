@@ -3,25 +3,31 @@
 #-------------------------------------------------------------------------------
 from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
 #-------------------------------------------------------------------------------
-# GC
+# Lcsm
 #-------------------------------------------------------------------------------
 
-def runGc(inputFile):
+def runLcsm(inputFile):
     fastaNames, fastaData = rosalindLoader(inputFile)
+    fastaData = sorted(fastaData)
+    template = fastaData[0]
+    min_length = len(fastaData[0])
+    longestMatch = ""
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    for i in range(0, min_length):
+        for j in range(min_length, i + len(longestMatch), -1):
+            s1 = template[i:j]
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+            matched_all = True
+            for s2 in fastaData[1:]:
+                if s1 not in s2:
+                    matched_all = False
+                    break
+
+            if matched_all:
+                longestMatch = s1
+                break
+
+    return longestMatch
 
 #-------------------------------------------------------------------------------
 # Fin
