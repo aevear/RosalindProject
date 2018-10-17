@@ -33,6 +33,7 @@ from rosalindLibrary.programs.splc import runSplc
 from rosalindLibrary.programs.lcsm import runLcsm
 from rosalindLibrary.programs.perm import runPerm
 from rosalindLibrary.programs.orf import runOrf
+from rosalindLibrary.programs.revp import runRevp
 
 #-------------------------------------------------------------------------------
 # Code
@@ -63,6 +64,7 @@ commands = {
     "orf" : runOrf,
     "splc" : runSplc,
     "lcsm" : runLcsm,
+    "revp" : runRevp,
     "iev" : runIev
 
 }
