@@ -1,27 +1,19 @@
 #-------------------------------------------------------------------------------
 # Import Libraries
 #-------------------------------------------------------------------------------
-from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
+import math
 #-------------------------------------------------------------------------------
-# GC
+# Pper
 #-------------------------------------------------------------------------------
+def runPper(inputFile):
+    fi = open(inputFile, "r")
+    inputData = fi.read().split(" ")
+    n, k = int(inputData[0]), int(inputData[1])
 
-def runGc(inputFile):
-    fastaNames, fastaData = rosalindLoader(inputFile)
+    perm = (math.factorial(n)/math.factorial(n-k))
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+    return perm % 1000000
 
 #-------------------------------------------------------------------------------
 # Fin

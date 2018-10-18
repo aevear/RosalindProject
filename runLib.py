@@ -32,8 +32,13 @@ from rosalindLibrary.programs.cons import runCons
 from rosalindLibrary.programs.splc import runSplc
 from rosalindLibrary.programs.lcsm import runLcsm
 from rosalindLibrary.programs.perm import runPerm
+from rosalindLibrary.programs.pmch import runPmch
+from rosalindLibrary.programs.pper import runPper
 from rosalindLibrary.programs.orf import runOrf
 from rosalindLibrary.programs.revp import runRevp
+from rosalindLibrary.programs.long import runLong
+from rosalindLibrary.programs.tran import runTran
+
 
 #-------------------------------------------------------------------------------
 # Code
@@ -64,7 +69,11 @@ commands = {
     "orf" : runOrf,
     "splc" : runSplc,
     "lcsm" : runLcsm,
+    "long" : runLong,
     "revp" : runRevp,
+    "pmch" : runPmch,
+    "pper" : runPper,
+    "tran" : runTran,
     "iev" : runIev
 
 }

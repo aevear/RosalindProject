@@ -12,7 +12,7 @@ def rosalindLoader(inputFile):
         fastaString = ""
 
         for char in inputLine:
-            if (char == "A") or (char == "C") or (char == "G") or (char == "T"):
+            if (char == "A") or (char == "C") or (char == "G") or (char == "T")or (char == "U"):
                 fastaString = fastaString + char
             else:
                 fastaName = fastaName + char

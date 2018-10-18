@@ -3,25 +3,33 @@
 #-------------------------------------------------------------------------------
 from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
 #-------------------------------------------------------------------------------
-# GC
+# Tran
 #-------------------------------------------------------------------------------
+transitionTable = [ ('A', 'G'),
+                    ('G', 'A'),
+                    ('C', 'T'),
+                    ('T', 'C') ]
 
-def runGc(inputFile):
+transversionTable = [ ('A', 'C'),
+                      ('C', 'A'),
+                      ('G', 'T'),
+                      ('T', 'G'),
+                      ('A', 'T'),
+                      ('T', 'A'),
+                      ('C', 'G'),
+                      ('G', 'C') ]
+
+def runTran(inputFile):
     fastaNames, fastaData = rosalindLoader(inputFile)
+    transition, transversion = 0.0, 0.0
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    for k in zip(fastaData[0], fastaData[1]):
+        if k in transitionTable:
+            transition += 1.0
+        if k in transversionTable:
+            transversion += 1.0
+    return transition/transversion
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
 
 #-------------------------------------------------------------------------------
 # Fin

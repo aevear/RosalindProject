@@ -6,22 +6,33 @@ from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
 # GC
 #-------------------------------------------------------------------------------
 
-def runGc(inputFile):
+def runLong(inputFile):
     fastaNames, fastaData = rosalindLoader(inputFile)
+    inLoop, assembledArray, convergentString = True, [], fastaData[0]
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    for k in fastaData:
+        assembledArray.append(0)
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+    assembledArray[0] = 1
+
+    while inLoop:
+        for index, dnaSnips in enumerate(fastaData):
+            if dnaSnips in convergentString:
+                assembledArray[index] = 1
+            elif assembledArray[index] == 0:
+                #Front end checking
+                for snpIndex in range(len(fastaData[0])/2):
+                    if dnaSnips[snpIndex:] == convergentString[:len(dnaSnips)-snpIndex]:
+                        convergentString = dnaSnips[:snpIndex] + convergentString
+                        assembledArray[index] = 1
+                for snpIndex in range(len(fastaData[0])/2):
+                    if dnaSnips[:-snpIndex] == convergentString[-len(dnaSnips)+snpIndex:]:
+                        convergentString = convergentString + dnaSnips[-snpIndex:]
+                        assembledArray[index] = 1
+
+        if 0 not in assembledArray:
+            inLoop = False
+    return convergentString
 
 #-------------------------------------------------------------------------------
 # Fin

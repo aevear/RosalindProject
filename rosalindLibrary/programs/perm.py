@@ -17,12 +17,14 @@ def runPerm(inputFile):
     perm = permutations(combinations[1:])
 
     # Print the obtained permutations
+    length = 0
     for i in list(perm):
         results = results + str(i)
+        length +=1
 
     results = results.replace("(", "\n").replace(")", "").replace(",", "")
 
-    return results[1:]
+    return str(length) + "\n" + results[1:]
 
 #-------------------------------------------------------------------------------
 # Fin

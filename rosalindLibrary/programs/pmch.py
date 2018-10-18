@@ -2,26 +2,29 @@
 # Import Libraries
 #-------------------------------------------------------------------------------
 from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
+from itertools import permutations
 #-------------------------------------------------------------------------------
-# GC
+# Pmch
 #-------------------------------------------------------------------------------
+def permutationEngine(inputData):
+    combinations = []
+    for k in range(int(inputData)):
+        combinations.append(k)
+    perm = list(permutations(combinations))
+    return len(perm)
 
-def runGc(inputFile):
+
+def runPmch(inputFile):
     fastaNames, fastaData = rosalindLoader(inputFile)
+    GC, UA = 0, 0
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    for k in fastaData[0]:
+        if k == "U":
+            UA += 1
+        if k == "G":
+            GC += 1
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+    return permutationEngine(GC) * permutationEngine(UA)
 
 #-------------------------------------------------------------------------------
 # Fin
