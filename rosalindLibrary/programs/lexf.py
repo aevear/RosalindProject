@@ -11,11 +11,10 @@ def runLexf(inputFile):
 
     import itertools
     results = list(itertools.product(variables, repeat=int(length)))
-    print results
 
     results = '\n'.join(map(str, results))
 
-    return results[1]
+    return results.replace('\'', "").replace('(', "").replace(")", "").replace(", ", "")
 
 
 
