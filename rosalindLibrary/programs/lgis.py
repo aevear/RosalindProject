@@ -1,27 +1,27 @@
 #-------------------------------------------------------------------------------
-# Import Libraries
+# Lgis
 #-------------------------------------------------------------------------------
-from rosalindLibrary.loaders.rosalindLoader import rosalindLoader
-#-------------------------------------------------------------------------------
-# GC
-#-------------------------------------------------------------------------------
+def runLgis(inputFile):
+    fi = open(inputFile, 'r')
+    inputData, permArray = fi.readline(), fi.readline().strip("\n").split(" ")
+    highestPath, lowestPath = [], []
 
-def runGc(inputFile):
-    fastaNames, fastaData = rosalindLoader(inputFile)
+    #to find highest path
+    for index, k1 in enumerate(permArray):
+        tempHigh = [k1]
+        print "yuhuuu" + str(tempHigh)
+        for k2 in permArray[index:]:
+            print k2 + " : " + str(int(tempHigh[-1]) + 1)
+            if k2 == str(int(tempHigh[-1]) + 1):
+                tempHigh.append(k2)
+        if len(tempHigh) > len(highestPath):
+            highestPath = tempHigh
 
-    winner, highest, gcContent, counter = 0, 0.0, 0.0, 0
-    for fastaEntry in fastaData:
-        for nucleotide in fastaEntry:
-            if (nucleotide == "G" or nucleotide == "C"):
-                gcContent += 1
-        if (gcContent/len(fastaEntry)) > highest:
-            highest = gcContent/len(fastaEntry)
-            winner = counter
-        gcContent = 0.0
-        counter += 1
-    highest = highest * 100
+    #to find lowest path
 
-    return (fastaNames[winner] + "\n" + str(round(highest, 6)))
+
+    return highestPath
+
 
 #-------------------------------------------------------------------------------
 # Fin

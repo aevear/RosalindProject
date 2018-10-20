@@ -38,7 +38,7 @@ from rosalindLibrary.programs.orf import runOrf
 from rosalindLibrary.programs.revp import runRevp
 from rosalindLibrary.programs.long import runLong
 from rosalindLibrary.programs.tran import runTran
-
+from rosalindLibrary.programs.lgis import runLgis
 
 #-------------------------------------------------------------------------------
 # Code
@@ -74,6 +74,7 @@ commands = {
     "pmch" : runPmch,
     "pper" : runPper,
     "tran" : runTran,
+    "lgis" : runLgis,
     "iev" : runIev
 
 }
