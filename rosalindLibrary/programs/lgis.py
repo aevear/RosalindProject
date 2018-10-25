@@ -4,7 +4,7 @@
 global maximum
 global minimum
 
-def dynamicLoop(arr , n ):
+def dynamicLoopHigh(arr , n ):
     # to allow the access of global variable
     global maximum
 
@@ -15,11 +15,8 @@ def dynamicLoop(arr , n ):
     # maxEndingHere is the length of LIS ending with arr[n-1]
     maxEndingHere = 1
 
-    """Recursively get all LIS ending with arr[0], arr[1]..arr[n-2]
-       IF arr[n-1] is maller than arr[n-1], and max ending with
-       arr[n-1] needs to be updated, then update it"""
     for i in xrange(1, n):
-        res = dynamicLoop(arr , i)
+        res = dynamicLoopHigh(arr , i)
         if arr[i-1] < arr[n-1] and res+1 > maxEndingHere:
             maxEndingHere = res +1
 
@@ -36,7 +33,7 @@ def runLgis(inputFile):
     highestPath, lowestPath = [], []
     global maximum
     maximum = 1
-    dynamicLoop(permArray, len(permArray))
+    dynamicLoopHigh(permArray, len(permArray))
 
     return maximum
 
