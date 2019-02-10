@@ -27,7 +27,7 @@ from rosalindLibrary.programs.mrna import runMrna
 from rosalindLibrary.programs.lia import runLia
 from rosalindLibrary.programs.prtm import runPrtm
 from rosalindLibrary.programs.grph import runGrph
-from rosalindLibrary.programs.mprt import runMprt
+#from rosalindLibrary.programs.mprt import runMprt
 from rosalindLibrary.programs.cons import runCons
 from rosalindLibrary.programs.splc import runSplc
 from rosalindLibrary.programs.lcsm import runLcsm
@@ -64,7 +64,7 @@ commands = {
     "lia" : runLia,
     "prtm" : runPrtm,
     "grph" : runGrph,
-    "mprt" : runMprt,
+    #"mprt" : runMprt,
     "cons" : runCons,
     "orf" : runOrf,
     "splc" : runSplc,
